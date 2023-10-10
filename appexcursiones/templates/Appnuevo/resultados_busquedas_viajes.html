@@ -1,0 +1,13 @@
+{% extends "Appnuevo/base.html" %}
+
+
+{% block contenido %}
+<ul>
+    {% for viaje in viajes%}
+        <li>{{viaje.nombre}}-{{viaje.grupo}}</li>
+
+    {% endfor %}
+    </ul>
+
+
+{% endblock %}

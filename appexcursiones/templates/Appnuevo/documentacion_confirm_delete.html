@@ -1,0 +1,20 @@
+{% extends "Appnuevo/base.html" %}
+
+
+{% block contenido %}
+
+<form method="post">
+    
+    {% csrf_token %}
+    
+    
+    <p>
+        Estas seguro de querer borrar la documentacion '{{object.nombre}}'?
+        <input type="submit" value="si">
+        
+    </p>
+
+    <a href="{% url 'proyecto-documentacion' %}">Volver al listado</a>
+</form>
+
+{% endblock %}

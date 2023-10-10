@@ -1,0 +1,16 @@
+{% extends "Appnuevo/base.html" %}
+
+{% load static %}
+
+{% block title %} Documentos {% endblock title %}
+
+{% block contenido %}
+<ul>
+    {% for documentos in documentacion%}
+        <li>{{documentos.nombre}}--{{documentos.fechatope}}--{{documentos.email}}</li>
+
+    {% endfor %}
+    </ul>
+
+
+{% endblock  %}

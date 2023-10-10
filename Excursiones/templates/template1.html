@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Este es mi proyecto de Viajes</title>
+</head>
+<body>
+
+    
+    {% if excursiones == "Argentina" %}
+        <h1 style="color:red">listado Excursiones: {{excursiones}}</h1>
+        
+    {% else%}
+        <h1 style="color:blue">listado Excursiones: {{excursiones}}</h1>
+
+    
+    {% endif %}
+    
+    <ul>{% for lista_disponible in listado_prueba %}
+        <li>{{lista_disponible}}</li>
+    
+    {% endfor %}
+    
+    </ul>
+
+</body>
+</html>

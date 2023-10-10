@@ -1,0 +1,16 @@
+{% extends "Appnuevo/base.html" %}
+
+{% load static %}
+
+{% block title %} Proveedores {% endblock title %}
+
+{% block contenido %}
+<ul>
+    {% for proveedor in proveedores%}
+        <li>{{proveedor.nombre}} {{proveedor.apellido}}-{{proveedor.dni}}</li>
+
+    {% endfor %}
+    </ul>
+
+
+{% endblock  %}

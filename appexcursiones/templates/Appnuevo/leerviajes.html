@@ -1,0 +1,21 @@
+{% extends "Appnuevo/base.html" %}
+
+{% load static %}
+
+{% block title %} Viajes {% endblock title %}
+
+{% block contenido %}
+
+{% if viajes %}
+    <ul>
+    {% for viaje in viajes %}
+        <li>{{viaje.id}}-{{viaje.nombre}}-{{viaje.grupo}} <a href="{% url 'proyecto-viajes-borrar' viaje.id %}">Borrar</a><a href="{% url 'proyecto-viajes-editar' viaje.id %}">Editar</a></li>
+        
+
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No Hay viajes disponibles de momento</p>
+{% endif %}
+
+{% endblock  %}

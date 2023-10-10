@@ -1,0 +1,17 @@
+{% extends "Appnuevo/base.html" %}
+
+
+{% block contenido %}
+
+<form action="{% url 'proyecto-viajes-buscar-resultados' %}" method="get">
+    <p>
+        Nombre del viaje: <input type="text" name="nombre_viaje">
+        <input type="submit" value="Buscar">
+        
+    </p>
+
+
+</form>
+
+
+{% endblock %}

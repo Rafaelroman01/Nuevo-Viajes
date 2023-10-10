@@ -1,0 +1,16 @@
+{% extends "Appnuevo/base.html" %}
+
+{% load static %}
+
+{% block title %} Recreadores {% endblock title %}
+
+{% block contenido %}
+<ul>
+    {% for recreador in recreadores%}
+        <li>{{recreador.nombre}} {{recreador.apellido}}-{{recreador.dni}}</li>
+
+    {% endfor %}
+    </ul>
+
+
+{% endblock  %}
