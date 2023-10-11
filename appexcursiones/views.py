@@ -290,7 +290,7 @@ def editar_perfil(request):
         
     else:
         #Crear el formulario vacio 
-        formulario = UserEditForm(initial{"email": usuario.email, "first_name": usuario.first_name, "last_name": usuario.last_name})
+        formulario = UserEditForm(initial={"email": usuario.email, "first_name": usuario.first_name, "last_name": usuario.last_name})
         
     return render(request, "Appnuevo/editar_perfil.html", {"form": formulario})
 
