@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path
 from django.urls import path, include
 from Excursiones.views import *
+import Excursiones.settings as settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,3 +27,5 @@ urlpatterns = [
     
     path('proyecto/', include("appexcursiones.urls"))
 ]
+#Agregar las URLS de archivos estaticos
+urlpatterns += static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
