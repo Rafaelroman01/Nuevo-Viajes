@@ -35,5 +35,5 @@ urlpatterns = [
     path('register/', registrar_usuario, name="auth-register"),
     path('logout/', LogoutView.as_view(template_name="Appnuevo/logout.html"), name="auth-logout"),
     path('perfil/editar/', editar_perfil, name="auth-editar-perfil"),
-    
+    path('perfil/avatar/', agregar_avatar, name="auth-avatar"),
 ]

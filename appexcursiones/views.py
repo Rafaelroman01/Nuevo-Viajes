@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from appexcursiones.forms import ViajeFormulario, RecreadorFormulario, ClienteFormulario, ProveedorFormulario,  DocumentacionFormulario, UserRegisterForm,  UserEditForm
-from appexcursiones.models import Viajes, Recreadores, Clientes, Proveedores, Documentacion   
+from appexcursiones.forms import ViajeFormulario, RecreadorFormulario, ClienteFormulario, ProveedorFormulario,  DocumentacionFormulario, UserRegisterForm,  UserEditForm, AvatarForm
+from appexcursiones.models import Viajes, Recreadores, Clientes, Proveedores, Documentacion, Avatar   
 
 
 #Dependencia para resolver apertura de archivos usando rutas relativas
@@ -22,7 +22,12 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def inicio(request):
-    return render(request, "Appnuevo/inicio.html")
+    if request.user.is_authenticated:
+        imagen_model = Avatar.objects.filter(user= request.user.id).order_by("-id")[0]
+        imagen_url = imagen_model.imagen.url
+    else:
+        imagen_url = ""
+    return render(request, "Appnuevo/inicio.html", {"imagen_url": imagen_url})
     
 @login_required
 def viajes(request):
@@ -294,3 +299,20 @@ def editar_perfil(request):
         
     return render(request, "Appnuevo/editar_perfil.html", {"form": formulario})
 
+
+@login_required
+def agregar_avatar(request):
+    if request.method =="POST":
+        formulario = AvatarForm(request.POST, files= request.FILES)
+        print(request.FILES, request.POST )
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+            
+            usuario = request.user 
+            avatar = Avatar (user=usuario, imagen=data["imagen"])
+            avatar.save()
+            return redirect("proyecto-inicio")
+        else:
+            return render(request, "Appnuevo/agregar_avatar.html", {"form": formulario, "errors": formulario.errors})
+    formulario = AvatarForm()
+    return render(request, "Appnuevo/agregar_avatar.html", {"form": formulario})
