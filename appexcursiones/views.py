@@ -276,19 +276,21 @@ def editar_perfil(request):
         #Validacion del formulario
         if formulario.is_valid():
             data = formulario.cleaned_data
+            
             #Actualizacion del usuario con los datos del formulario
             
-            #usuario.email = data["email"]
-            #usuario.first_name = data["first_name"]
-            #usuario.last_name = data["last_name"]
+            usuario.email = data["email"]
+            usuario.first_name = data["first_name"]
+            usuario.last_name = data["last_name"]
             
             usuario.save()
             return redirect("proyecto-inicio")
         else:
             return render(request, "Appnuevo/editar_perfil.html", {"form": formulario, "erros": formulario.errors})
         
-    #else:
+    else:
         #Crear el formulario vacio 
-        #formulario = UserEditForm(initial= {"email": usuario.email, "first_name": usuario.first_name, "last_name": usuario.last_name})
+        formulario = UserEditForm(initial{"email": usuario.email, "first_name": usuario.first_name, "last_name": usuario.last_name})
         
     return render(request, "Appnuevo/editar_perfil.html", {"form": formulario})
+

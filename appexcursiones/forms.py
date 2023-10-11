@@ -51,8 +51,11 @@ class UserEditForm(UserCreationForm):
     last_name = forms.CharField(label="Apellido")
     first_name = forms.CharField(label="Nombre")
     email= forms.EmailField(label="Correo Electronico")
+    password1 = forms.CharField(label="Password", widget=forms.PasswordInput, required=False)
+    password1 = forms.CharField(label="Confirme el Password", widget=forms.PasswordInput, required=False)
 
     class Meta:
         model = User
         fields =[ "email", "last_name", "first_name"] 
+        
         help_texts = {"email": "Indica un correo electronico que uses habitualmente", "first_name": "" , "last_name":""}
