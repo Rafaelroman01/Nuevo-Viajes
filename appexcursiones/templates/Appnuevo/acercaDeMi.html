@@ -1,0 +1,42 @@
+{% extends "Appnuevo/base.html" %}
+
+{% load static %}
+
+
+{% block contenido %}
+
+<br>
+<br>
+    <div class="container">
+      <h2 class="text-center text-dark">
+        Acerca de Mi
+    </h2>
+    <br>
+    <div class="row g-4">
+        <div class="col-md-6 col-lg-3">
+            <div class="card bg-sucess">
+                <div class="card-body text-center">
+                    <img src="{% static 'Appnueva/assets/img/fotomia1.jpg' %}" class="rounded-circle mb-3" width="150px">
+                <h3 class="card-tittle m-3">Ramon Roman</h3>
+                <p class="card-text m-3">Python Developer Jr</p>
+                <p class="card-text">Sigueme en:</p>
+                <a href="https://github.com/Rafaelroman01"><i class="bi bi-github tex-dark mx-1"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+        <div class="">
+            <div class="text-center">
+                <p>Mi nombre es Ramón Román, graduado en el Instituto Universitario de Tecnología de Administración Industrial en:  Administración Mención “Banca y Finanzas  y luego como Contador Publico en la “Universidad Alejandro Humboldt”, ambos en Caracas-Venezuela.
+                    Actualmente me encuentro terminando el curso de Python, Entre mis principales objetivos está el de seguir conociendo sobre la programación en Python y luego inscribirme en los cursos de Data Scientist y Data Analytics </p>
+                </div>
+            </div>
+        </div>
+    </div>
+<br>
+<br>
+<br>
+<br>
+
+{% endblock %}
+

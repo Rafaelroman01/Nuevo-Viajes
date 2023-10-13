@@ -28,7 +28,10 @@ def inicio(request):
     else:
         imagen_url = ""
     return render(request, "Appnuevo/inicio.html", {"imagen_url": imagen_url})
-    
+
+def acerca_de_mi(request):
+    return render(request, "Appnuevo/acercaDeMi.html")
+
 @login_required
 def viajes(request):
     return render(request, "Appnuevo/viajes.html")
