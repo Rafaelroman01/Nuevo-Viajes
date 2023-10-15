@@ -25,7 +25,8 @@ urlpatterns = [
     path('saludo/', vista_saludo),
     path('plantilla/', vista_plantilla),
     
-    path('proyecto/', include("appexcursiones.urls"))
+    path('proyecto/', include("appexcursiones.urls")),
+    path('appdos/', include("authentication_app.urls"))
 ]
 #Agregar las URLS de archivos estaticos
 urlpatterns += static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)

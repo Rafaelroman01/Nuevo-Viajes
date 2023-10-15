@@ -127,7 +127,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #Auth config
-LOGIN_URL = "/proyecto/login/"
+LOGIN_URL = "/auth/login/"
 
 
 #Configuraciones MEDIA
