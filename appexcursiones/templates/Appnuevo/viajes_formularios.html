@@ -3,15 +3,18 @@
 
 {% block contenido %}
 
-<form action="" method="post">
+<form action="/proyecto/viajes/crear/" method="post">
     {% csrf_token %}
+    <p>
+        Viaje <input type="text" name="viaje">
+    </p>
 
-    {{formulario.as_p }}
+    <p>
+        Destino <input type="text" name="destino">
+    </p>
 
-
-<input type="submit" value="Cargar Viajes">
+  <input type="submit" value="Cargar Viajes">
 
 </form>
-
 
 {% endblock %}

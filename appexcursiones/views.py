@@ -29,29 +29,66 @@ def inicio(request):
         imagen_url = ""
     return render(request, "Appnuevo/inicio.html", {"imagen_url": imagen_url})
 
-#def acerca_de_mi(request):
-    #return render(request, "Appdos/acercaDeMi.html")
-
-@login_required
 def viajes(request):
-    return render(request, "Appnuevo/viajes.html")
-
-def creacion_viajes(request):
-    #Validamos el tipo de peticion
-    if request.method =="POST":
+    errores = ""
+    
+    #Validamos tipo de validacion
+    if request.method == "POST":
+        #Cargamos los datos en el formulario
         formulario = ViajeFormulario(request.POST)
+        
+        #Validamos los datos
+        if formulario.is_valid():
+            
+            #Recuperamos los Datos
+            data = formulario.cleaned_data
+            #Creamos el viaje
+            viaje = Viajes(nombre=data["nombre"], destino=data["destino"], grupo=data["grupo"], email=data["email"])
+            #Guardamos el viaje
+            viaje.save()
+        else:
+            #Si el formulario no es valido, guardamos los errores para mostrarlos
+            errores = formulario.errors
+            
+    #Recuperar todos los cursos de la BD
+    viajes = Viajes.objects.all() 
+    
+    #Creamos el formulario vacio
+    formulario = ViajeFormulario()
+    
+    #Creamos el contexto
+    contexto = {"listado_viajes":viajes, "formulario": formulario, "errores":errores}
+    
+    #Retornamos la repuesta
+    return render(request, "Appnuevo/viajes.html", contexto)
+
+def editar_viajes(request):
+    viaje = Viajes.objects.get(id=id)
+       
+    #Validamos tipo de validacion
+    if request.method == "POST":
+                   
+        #Cargamos los datos en el formulario
+        formulario = ViajeFormulario(request.POST)
+            
         # Validamos que el formulario no tenga problemas
         if formulario.is_valid():
             #Recuperamos los datos del atributo cleaned_data
             data = formulario.cleaned_data
-            # Creamos los datos de los viajes
-            viajes = Viajes(nombre=data["nombre"], destino=data["destino"], grupo=data["grupo"], email=data["email"])
+            #Creamos el viaje
+            viaje.nombre = data["nombre"]
+            viaje.destino = data["destino"]
+            viaje.grupo = data["grupo"]
+            viaje.email = data["email"]
             # Guardamos el formulario
-            viajes.save()
-    
-    formulario = ViajeFormulario()
-    contexto = {"formulario": formulario} 
-    return render(request, "Appnuevo/viajes_formularios.html", contexto)
+            viaje.save()
+            return redirect("proyecto-viajes")
+        else:
+            #Retornamos la repuesta
+            return render(request, "Appnuevo/editar_viajes.html", {"formulario": formulario, "errores": formulario.errors})
+    else:
+        formulario = ViajeFormulario(initial={"nombre":viaje.nombre, "grupo":viaje.grupo})
+        return render(request, "Appnuevo/editar_curso.html",{"formulario":formulario, "errores": ""})
 
 def buscar_viajes(request):
     return render(request, "Appnuevo/busqueda_viajes.html")
@@ -61,51 +98,12 @@ def resultados_buscar_viajes(request):
     viajes = Viajes.objects.filter(nombre__icontains=nombre_viaje)
     return render(request, "Appnuevo/resultados_busquedas_viajes.html", {"viajes":viajes})
 
-def leer_viajes(request):
-    #Trae todos los viajes
-    viajes = Viajes.objects.all()
-    contexto = {"viajes":viajes}
-    return render(request, "Appnuevo/leerviajes.html", contexto)
-
 def eliminar_viajes(request, id):
     #Trae todos los viajes
-    viaje = Viajes.objects.get(id = id)
+    viaje = Viajes.objects.get(id=id)
     viaje.delete()
-    contexto = {"viaje": viaje}
-    return render(request, "Appnuevo/viajes.html", contexto)
-
-
-def editar_viajes(request, id):
-    viaje = Viajes.objects.get(id = id)
-    if request.method =="POST":
-        formulario = ViajeFormulario(request.POST)
-        # Validamos que el formulario no tenga problemas
-        if formulario.is_valid():
-            #Recuperamos los datos del atributo cleaned_data
-            data = formulario.cleaned_data
-            #
-            viaje.nombre = data["nombre"]
-            viaje.destino = data["destino"]
-            viaje.grupo= data["grupo"]
-            viaje.email= data["email"]
-            # Guardamos el formulario
-            viaje.save()
-            return redirect("proyecto-documentacion-leer")
-        else:
-         return render(request, "Appnuevo/editar_curso.html", {"formulario":formulario, "errores": formulario.errors})
-    else:
-        formulario = ViajeFormulario(initial={"nombre":viaje.nombre, "grupo":viaje.grupo})
-        return render(request, "Appnuevo/editar_curso.html",{"formulario":formulario, "errores": ""})
-
-
-#def eliminar_curso(request, id):
-    #Trae todos los viajes
-    #viajes = Viajes.objects.get(id = id)
-    #viajes.delete()
+    return redirect("proyecto-viajes")
     
-    #return redirect ("proyecto-viajes-borrar")
-
-
 def recreadores(request):
     return render(request, "Appnuevo/recreadores.html")
 
@@ -209,11 +207,7 @@ def leer_documentacion(request):
     contexto = {"documentacion":documentacion}
     return render(request, "Appnuevo/leerdocumentacion.html", contexto)
 
-def test(request):
-    ruta = os.path.join(BASE_DIR, "appexcursiones/templates/Appnuevo/base.html")
-    print(BASE_DIR, __file__)
-    file = open(ruta)
-    return HttpResponse(file.read)
+
 class DocumentacionList(LoginRequiredMixin, ListView):
     model = Documentacion
     template_name = "Appnuevo/list_documentacion.html"
@@ -238,84 +232,4 @@ class DocumentacionDelete(DeleteView):
     success_url = "/proyecto/documentacion/"
     template_name = "Appnuevo/documentacion_confirm_delete.html" 
 
-def iniciar_sesion(request):
-    errors = ""
-    if request.method =="POST":
-        formulario = AuthenticationForm(request, data=request.POST)
-        if formulario.is_valid():
-            data = formulario.cleaned_data
-            
-            user = authenticate(username=data["username"], password=data["password"])
-            if user is not None:
-                login(request, user)
-                return redirect("proyecto-inicio")
-            else:
-                return render(request, "Appnuevo/login.html", {"form": formulario, "errors": "Credenciales Invalidas"})
-       
-        else:
-            return render(request, "Appnuevo/login.html", {"form": formulario, "errors": formulario.errors})
-    formulario = AuthenticationForm()
-    return render(request, "Appnuevo/login.html", {"form": formulario, "errors": errors})
-    
-def registrar_usuario(request):
-    
-    if request.method == "POST":
-        formulario = UserRegisterForm(request.POST)
         
-        if formulario.is_valid():
-            
-            formulario.save()
-            return redirect("proyecto-inicio")
-        else:
-            return render(request, "Appnuevo/register.html", {"form": formulario, "errors": formulario.errors})
-    
-    formulario = UserRegisterForm()            
-    return render(request, "Appnuevo/register.html", {"form": formulario})
-        
-@login_required       
-def editar_perfil(request):
-    
-    usuario = request.user
-    
-    if request.method == "POST":
-        # Cargar informacion en el formulario
-        formulario = UserEditForm(request.POST)
-        
-        #Validacion del formulario
-        if formulario.is_valid():
-            data = formulario.cleaned_data
-            
-            #Actualizacion del usuario con los datos del formulario
-            
-            usuario.email = data["email"]
-            usuario.first_name = data["first_name"]
-            usuario.last_name = data["last_name"]
-            
-            usuario.save()
-            return redirect("proyecto-inicio")
-        else:
-            return render(request, "Appnuevo/editar_perfil.html", {"form": formulario, "erros": formulario.errors})
-        
-    else:
-        #Crear el formulario vacio 
-        formulario = UserEditForm(initial={"email": usuario.email, "first_name": usuario.first_name, "last_name": usuario.last_name})
-        
-    return render(request, "Appnuevo/editar_perfil.html", {"form": formulario})
-
-
-@login_required
-def agregar_avatar(request):
-    if request.method =="POST":
-        formulario = AvatarForm(request.POST, files= request.FILES)
-        print(request.FILES, request.POST )
-        if formulario.is_valid():
-            data = formulario.cleaned_data
-            
-            usuario = request.user 
-            avatar = Avatar (user=usuario, imagen=data["imagen"])
-            avatar.save()
-            return redirect("proyecto-inicio")
-        else:
-            return render(request, "Appnuevo/agregar_avatar.html", {"form": formulario, "errors": formulario.errors})
-    formulario = AvatarForm()
-    return render(request, "Appnuevo/agregar_avatar.html", {"form": formulario})

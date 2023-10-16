@@ -1,10 +1,29 @@
 {% extends "Appnuevo/base.html" %}
 
-{% load static %}
-
 
 {% block contenido %}
-<h1>Hola Bienvenidos al panel de viajes y excursiones</h1>
-<p>Esta es la oferta de viajes disponibles</p>
+<h1>Viajes Disponibles</h1>
+<p>Estos son los viajes que todavia tienen vacantes</p>
 
-{% endblock %}
+{% if errores %}
+    <P style="color:red">{{errores}}</P>
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+    {{ formulario.as_p }}
+    <input type="submit" value="Crear viaje">
+</form>
+
+{% if listado_viajes %}
+    <ul>
+    {% for viaje in listado_viajes %}
+        <li>{{viaje}} <a href="{% url  'proyecto-viajes-borrar'  viaje.id %}">Borrar</a> <a href="{% url 'proyecto-viajes-editar'  viaje.id %}">Editar</a> </li>
+    {% endfor %}
+
+    </ul>
+{% else %}
+    <p>No Hay viajes disponibles de momento</p>
+{% endif %}
+
+{% endblock  %}
