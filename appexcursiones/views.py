@@ -25,6 +25,7 @@ def inicio(request):
     if request.user.is_authenticated:
         imagen_model = Avatar.objects.filter(user= request.user.id).order_by("-id")[0]
         imagen_url = imagen_model.imagen.url
+        
     else:
         imagen_url = ""
     return render(request, "Appnuevo/inicio.html", {"imagen_url": imagen_url})
@@ -62,7 +63,7 @@ def viajes(request):
     #Retornamos la repuesta
     return render(request, "Appnuevo/viajes.html", contexto)
 
-def editar_viajes(request):
+def editar_viajes(request, id):
     viaje = Viajes.objects.get(id=id)
        
     #Validamos tipo de validacion
@@ -75,11 +76,9 @@ def editar_viajes(request):
         if formulario.is_valid():
             #Recuperamos los datos del atributo cleaned_data
             data = formulario.cleaned_data
-            #Creamos el viaje
+            #Editamos el viaje
             viaje.nombre = data["nombre"]
-            viaje.destino = data["destino"]
             viaje.grupo = data["grupo"]
-            viaje.email = data["email"]
             # Guardamos el formulario
             viaje.save()
             return redirect("proyecto-viajes")
@@ -88,7 +87,7 @@ def editar_viajes(request):
             return render(request, "Appnuevo/editar_viajes.html", {"formulario": formulario, "errores": formulario.errors})
     else:
         formulario = ViajeFormulario(initial={"nombre":viaje.nombre, "grupo":viaje.grupo})
-        return render(request, "Appnuevo/editar_curso.html",{"formulario":formulario, "errores": ""})
+        return render(request, "Appnuevo/editar_viajes.html",{"formulario":formulario, "errores": ""})
 
 def buscar_viajes(request):
     return render(request, "Appnuevo/busqueda_viajes.html")
