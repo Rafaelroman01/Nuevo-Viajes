@@ -9,6 +9,7 @@ class Viajes(models.Model):
     destino = models.CharField(max_length=50)
     grupo = models.IntegerField()
     email= models.EmailField(max_length=80)
+    imagen_viaj= models.ImageField(null=True, blank=True, upload_to="viajes")
     def __str__(self):
         return f"Nombre: {self.nombre.capitalize()}, Grupo: {self.grupo}, Email: {self.email}"
 

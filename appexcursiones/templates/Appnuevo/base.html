@@ -43,8 +43,10 @@
                     <p class="small text-muted mb-4 mb-lg-0">Hola Visitante</p>
 
                 {% endif %}
+                
             
             </div>
+            
         </nav>
         <!-- Masthead-->
         <header class="masthead">
@@ -54,15 +56,15 @@
                         <div class="text-center text-white">
                             <!-- Page heading-->
                             <h1 class="mb-5">Mi proyecto de viajes!</h1>
-                                                        
+                            {% block  contenido %}
+
+                            {% endblock  %}                          
                         </div>
                     </div>
                 </div>
             </div>
         </header>
-        {% block  contenido %}
-
-        {% endblock  %}
+       
         <!-- Icons Grid-->
         </section>
         <!-- Image Showcases-->

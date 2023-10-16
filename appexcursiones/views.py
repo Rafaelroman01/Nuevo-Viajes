@@ -44,7 +44,7 @@ def viajes(request):
             #Recuperamos los Datos
             data = formulario.cleaned_data
             #Creamos el viaje
-            viaje = Viajes(nombre=data["nombre"], destino=data["destino"], grupo=data["grupo"], email=data["email"])
+            viaje = Viajes(nombre=data["nombre"], destino=data["destino"], grupo=data["grupo"], email=data["email"], imagen_viaj=data["imagen"])
             #Guardamos el viaje
             viaje.save()
         else:
@@ -58,7 +58,7 @@ def viajes(request):
     formulario = ViajeFormulario()
     
     #Creamos el contexto
-    contexto = {"listado_viajes":viajes, "formulario": formulario, "errores":errores}
+    contexto = {"listado_viajes": viajes, "formulario": formulario, "errores":errores}
     
     #Retornamos la repuesta
     return render(request, "Appnuevo/viajes.html", contexto)

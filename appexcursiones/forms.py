@@ -8,6 +8,7 @@ class ViajeFormulario(forms.Form):
     destino= forms.CharField(max_length=50)
     grupo = forms.IntegerField()
     email= forms.EmailField(max_length=80)
+    imagen_viaj= forms.ImageField()
     
 class RecreadorFormulario(forms.Form):
     nombre = forms.CharField(max_length=50)
