@@ -1,0 +1,26 @@
+{% extends "Appnuevo/base.html" %}
+
+{% load static %}
+
+
+{% block contenido %}
+
+
+<div class="row">
+    {% for cliente in object_list %}
+        <div class="card" style="width: 18rem;" >
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+            <p class="text-center text-black">GRUPO: {{ cliente.apellido }}, {{ cliente.nombre }}</p>
+            <p class="text-center text-black">EMAIL: {{ cliente.email }}</p>
+            <a href="{% url 'proyecto-clientes-detail' cliente.id %}" class="btn btn-primary">Ver</a>
+            <a href="{% url 'proyecto-clientes-update' cliente.id %}" class="btn btn-primary">Editar</a>
+            <a href="{% url 'proyecto-clientes-delete' cliente.id %}" class="btn btn-primary">Borrar</a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<a class="btn btn-primary btn-xl rounded-pill mt-5" href="{% url 'proyecto-clientes-create' %}">Agregar nuevo</a>
+
+{% endblock contenido %}

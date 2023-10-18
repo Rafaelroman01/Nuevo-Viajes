@@ -132,65 +132,61 @@ class RecreadoresDeleteView(DeleteView):
 
 #--------------------------------------------------------------------------------------------#
 
+class ClientesListViews(LoginRequiredMixin, ListView):
+    model = Clientes
+    template_name = "Appnuevo/clientes_list.html"
 
-
-
-def clientes(request):
-    return render(request, "Appnuevo/clientes.html")
-
-
-def creacion_clientes(request):
-    if request.method =="POST":
-        formulario = ClienteFormulario(request.POST)
-        # Validamos que el formulario no tenga problemas
-        if formulario.is_valid():
-            #Recuperamos los datos del atributo cleaned_data
-            data = formulario.cleaned_data
-            #
-            clientes = Clientes(nombre=data["nombre"], apellido=data["apellido"], dni=data["dni"], edad=data["edad"], email=data["email"])
-            # Guardamos el formulario
-            clientes.save()
+class ClientesDetailViews(LoginRequiredMixin, DetailView):
+    model = Clientes
+    template_name = "Appnuevo/clientes_detail.html"
     
-    formulario = ClienteFormulario()
-    contexto = {"formulario": formulario} 
-    return render(request, "Appnuevo/clientes_formularios.html", contexto)
-
-def leer_clientes(request):
-    #Trae todos los viajes
-    clientes = Clientes.objects.all()
-    contexto = {"clientes":clientes}
-    return render(request, "Appnuevo/leerclientes.html", contexto)
-
-def proveedores(request):
-    return render(request, "Appnuevo/proveedores.html")
-
-def creacion_proveedores(request):
-    if request.method =="POST":
-        formulario = ProveedorFormulario(request.POST)
-        # Validamos que el formulario no tenga problemas
-        if formulario.is_valid():
-            #Recuperamos los datos del atributo cleaned_data
-            data = formulario.cleaned_data
-            #
-            proveedores = Proveedores(nombre=data["nombre"], apellido=data["apellido"], dni=data["dni"], edad=data["edad"], email=data["email"])
-            # Guardamos el formulario
-            proveedores.save()
+class ClientesCreateView(LoginRequiredMixin, CreateView):
+    model = Clientes
+    template_name = "Appnuevo/clientes_create.html"
+    fields = ["nombre", "apellido", "dni", "edad",  "email"]
+    success_url = reverse_lazy("proyecto-clientes-list")
     
-    formulario = ProveedorFormulario()
-    contexto = {"formulario": formulario}  
-    return render(request, "Appnuevo/proveedores_formularios.html", contexto)
+class ClientesUpdateView(LoginRequiredMixin, UpdateView):
+    model = Clientes
+    success_url = reverse_lazy("proyecto-clientes-list")
+    fields = ["nombre", "apellido", "dni", "edad",  "email"]
+    template_name = "Appnuevo/clientes_update.html"
 
-def leer_proveedores(request):
-    #Trae todos los viajes
-    proveedores = Proveedores.objects.all()
-    contexto = {"proveedores":proveedores}
-    return render(request, "Appnuevo/leerproveedores.html", contexto)
+class ClientesDeleteView(DeleteView):
+    model = Clientes
+    success_url = reverse_lazy("proyecto-clientes-list")
+    template_name = "Appnuevo/clientes_confirm_delete.html" 
 
 
+#--------------------------------------------------------------------------------------------#
+
+class ProveedoresListViews(LoginRequiredMixin, ListView):
+    model = Proveedores
+    template_name = "Appnuevo/proveedores_list.html"
+
+class ProveedoresDetailViews(LoginRequiredMixin, DetailView):
+    model = Proveedores
+    template_name = "Appnuevo/proveedores_detail.html"
+    
+class ProveedoresCreateView(LoginRequiredMixin, CreateView):
+    model = Proveedores
+    template_name = "Appnuevo/proveedores_create.html"
+    fields = ["nombre", "apellido", "dni", "edad",  "email"]
+    success_url = reverse_lazy("proyecto-proveedores-list")
+    
+class ProveedoresUpdateView(LoginRequiredMixin, UpdateView):
+    model = Proveedores
+    success_url = reverse_lazy("proyecto-proveedores-list")
+    fields = ["nombre", "apellido", "dni", "edad",  "email"]
+    template_name = "Appnuevo/proveedores_update.html"
+
+class ProveedoresDeleteView(DeleteView):
+    model = Proveedores
+    success_url = reverse_lazy("proyecto-proveedores-list")
+    template_name = "Appnuevo/proveedores_confirm_delete.html" 
 
 
-#def documentacion(request):
-    #return render(request, "Appnuevo/documentacion.html")
+#--------------------------------------------------------------------------------------------#
 
 class DocumentacionList(LoginRequiredMixin, ListView):
     model = Documentacion
