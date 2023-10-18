@@ -1,0 +1,16 @@
+{% extends "Appnuevo/base.html" %}
+
+{% load static %}
+
+{% block contenido %}
+
+<h1>Detalle del desafio entregado</h1>
+
+<p>Nombre: <i>{{documentacion.nombre}}</i></p>
+<p>Fecha: <i>{{documentacion.fechatope}}</i></p>
+<p>Entregado: <i>{{documentacion.entregado}}</i></p>
+<p>Email: <i>{{documentacion.email}}</p>
+
+<button type="button" class="btn btn-dark"><a href="{% url 'proyecto-documentacion-list' %}">Volver al listado</a>
+
+{% endblock contenido %}

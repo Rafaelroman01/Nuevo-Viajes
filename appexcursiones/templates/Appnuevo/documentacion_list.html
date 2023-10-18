@@ -1,0 +1,24 @@
+{% extends "Appnuevo/base.html" %}
+
+
+{% block contenido %}
+
+<h1>Desafios documentacion</h1>
+<ul>
+    {% for documento in object_list %}
+        <li>
+            <p>Nombre: {{documento.nombre}}</p> 
+            <p>Fecha: <i>{{documento.fechatope}}</i></p>
+            <p>Entregado: <i>{{documento.entregado}}</i></p>
+            <p>Email: <i>{{documento.email}}</p>
+
+
+            <a href="{% url 'proyecto-documentacion-detail' documento.id %}">Detalle</a>
+            <a href="{% url 'proyecto-documentacion-update' documento.id %}">Actualizar</a>
+            <a href="{% url 'proyecto-documentacion-delete' documento.id %}">Borrar</a>
+        </li>
+    {% endfor %}
+</ul>
+<a class="btn btn-primary btn-xl rounded-pill mt-5" href="{% url 'proyecto-documentacion-create' %}">Agregar nuevo</a>
+
+{% endblock contenido %}

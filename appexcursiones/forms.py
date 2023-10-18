@@ -31,12 +31,7 @@ class ProveedorFormulario(forms.Form):
     edad = forms.IntegerField()
     email= forms.EmailField(max_length=80) 
 
-class DocumentacionFormulario(forms.Form):
-    nombre = forms.CharField(max_length=50)
-    fechatope = forms.DateField()
-    entregado = forms.BooleanField()
-    email= forms.EmailField(max_length=80)
-    
+
 class UserRegisterForm(UserCreationForm):
     last_name = forms.CharField(label="Apellido")
     first_name = forms.CharField(label="Nombre")

@@ -1,0 +1,26 @@
+{% extends "Appnuevo/base.html" %}
+
+{% load static %}
+
+
+{% block contenido %}
+
+
+<div class="row">
+    {% for recreador in object_list %}
+        <div class="card" style="width: 18rem;" >
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+            <p class="text-center text-black">GRUPO: {{ recreador.apellido }}, {{ recreador.nombre }}</p>
+            <p class="text-center text-black">EMAIL: {{ recreador.email }}</p>
+            <a href="{% url 'proyecto-recreadores-detail' recreador.id %}" class="btn btn-primary">Ver</a>
+            <a href="{% url 'proyecto-recreadores-update' recreador.id %}" class="btn btn-primary">Editar</a>
+            <a href="{% url 'proyecto-recreadores-delete' recreador.id %}" class="btn btn-primary">Borrar</a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<a class="btn btn-primary btn-xl rounded-pill mt-5" href="{% url 'proyecto-recreadores-create' %}">Agregar nuevo</a>
+
+{% endblock contenido %}

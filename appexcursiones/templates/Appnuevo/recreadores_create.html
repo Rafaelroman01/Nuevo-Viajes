@@ -1,0 +1,20 @@
+{% extends "Appnuevo/base.html" %}
+
+{% load static %}
+
+{% block contenido %}
+
+<form method="post">
+    
+    {% csrf_token %}
+    <p>Nombre: <i>{{form.nombre}}</i></p>
+    <p>Apellido: <i>{{form.apellido}}</i></p>
+    <p>Edad: <i>{{form.edad}}</i></p>
+    <p>DNI: <i>{{form.dni}}</i></p>
+    <p>Email: <i>{{form.email}}</i></p>
+    <input type="submit" value="Enviar">
+        
+ 
+</form>
+
+{% endblock contenido %}

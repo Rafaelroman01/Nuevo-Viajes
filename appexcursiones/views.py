@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from appexcursiones.forms import ViajeFormulario, RecreadorFormulario, ClienteFormulario, ProveedorFormulario,  DocumentacionFormulario, UserRegisterForm,  UserEditForm, AvatarForm
+from appexcursiones.forms import ViajeFormulario, RecreadorFormulario, ClienteFormulario, ProveedorFormulario, UserRegisterForm,  UserEditForm, AvatarForm
 from appexcursiones.models import Viajes, Recreadores, Clientes, Proveedores, Documentacion, Avatar   
-
+from django.urls import reverse_lazy
 
 #Dependencia para resolver apertura de archivos usando rutas relativas
 from Excursiones.settings import BASE_DIR
@@ -102,32 +102,38 @@ def eliminar_viajes(request, id):
     viaje = Viajes.objects.get(id=id)
     viaje.delete()
     return redirect("proyecto-viajes")
+#----------------------------------------------------------------------------------------#    
+
+class RecreadoresListViews(LoginRequiredMixin, ListView):
+    model = Recreadores
+    template_name = "Appnuevo/recreadores_list.html"
+
+class RecreadoresDetailViews(LoginRequiredMixin, DetailView):
+    model = Recreadores
+    template_name = "Appnuevo/recreadores_detail.html"
     
-def recreadores(request):
-    return render(request, "Appnuevo/recreadores.html")
-
-
-def creacion_recreadores(request):
-    if request.method =="POST":
-        formulario = RecreadorFormulario(request.POST)
-        # Validamos que el formulario no tenga problemas
-        if formulario.is_valid():
-            #Recuperamos los datos del atributo cleaned_data
-            data = formulario.cleaned_data
-            #
-            recreadores = Recreadores(nombre=data["nombre"], apellido=data["apellido"], dni=data["dni"], edad=data["edad"], email=data["email"])
-            # Guardamos el formulario
-            recreadores.save()
+class RecreadoresCreateView(LoginRequiredMixin, CreateView):
+    model = Recreadores
+    template_name = "Appnuevo/recreadores_create.html"
+    fields = ["nombre", "apellido", "dni", "edad",  "email"]
+    success_url = reverse_lazy("proyecto-recreadores-list")
     
-    formulario = RecreadorFormulario()
-    contexto = {"formulario": formulario} 
-    return render(request, "Appnuevo/recreadores_formularios.html", contexto)
+class RecreadoresUpdateView(LoginRequiredMixin, UpdateView):
+    model = Recreadores
+    success_url = reverse_lazy("proyecto-recreadores-list")
+    fields = ["nombre", "apellido", "dni", "edad",  "email"]
+    template_name = "Appnuevo/recreadores_update.html"
 
-def leer_recreadores(request):
-    #Trae todos los viajes
-    recreadores = Recreadores.objects.all()
-    contexto = {"recreadores":recreadores}
-    return render(request, "Appnuevo/leerrecreadores.html", contexto)
+class RecreadoresDeleteView(DeleteView):
+    model = Recreadores
+    success_url = reverse_lazy("proyecto-recreadores-list")
+    template_name = "Appnuevo/recreadores_confirm_delete.html" 
+
+
+#--------------------------------------------------------------------------------------------#
+
+
+
 
 def clientes(request):
     return render(request, "Appnuevo/clientes.html")
@@ -181,54 +187,32 @@ def leer_proveedores(request):
     return render(request, "Appnuevo/leerproveedores.html", contexto)
 
 
-def documentacion(request):
-    return render(request, "Appnuevo/documentacion.html")
 
-def creacion_documentacion(request):
-    if request.method =="POST":
-        formulario = DocumentacionFormulario(request.POST)
-        # Validamos que el formulario no tenga problemas
-        if formulario.is_valid():
-            #Recuperamos los datos del atributo cleaned_data
-            data = formulario.cleaned_data
-            #
-            documentacion = Documentacion(nombre=data["nombre"], fechatope=data["fechatope"], entregado=data["entregado"], email=data["email"])
-            # Guardamos el formulario
-            documentacion.save()
-    
-    formulario = DocumentacionFormulario()
-    contexto = {"formulario": formulario} 
-    return render(request, "Appnuevo/documentacion_formularios.html", contexto)
 
-def leer_documentacion(request):
-    #Trae todos los viajes
-    documentacion = Documentacion.objects.all()
-    contexto = {"documentacion":documentacion}
-    return render(request, "Appnuevo/leerdocumentacion.html", contexto)
-
+#def documentacion(request):
+    #return render(request, "Appnuevo/documentacion.html")
 
 class DocumentacionList(LoginRequiredMixin, ListView):
     model = Documentacion
-    template_name = "Appnuevo/list_documentacion.html"
+    template_name = "Appnuevo/documentacion_list.html"
 
 class DocumentacionDetail(DetailView):
     model = Documentacion
-    template_name = "Appnuevo/detail_documentacion.html"
+    template_name = "Appnuevo/documentacion_detail.html"
     
 class DocumentacionCreate(CreateView):
     model = Documentacion
-    success_url = "/proyecto/documentacion/"
+    template_name = "Appnuevo/documentacion_create.html"
     fields = ["nombre", "fechatope", "entregado", "email"]
-    template_name = "Appnuevo/documentacion_form.html"
+    success_url = reverse_lazy("proyecto-documentacion-list")
     
-class DocumentacionUpdate(UpdateView):
+class DocumentacionUpdate(LoginRequiredMixin, UpdateView):
     model = Documentacion
-    success_url = "/proyecto/documentacion/"
+    success_url = "proyecto-documentacion-list"
     fields = ["nombre", "fechatope", "entregado", "email"]
-    template_name = "Appnuevo/documentacion_form.html"
+    template_name = "Appnuevo/documentacion_update.html"
 class DocumentacionDelete(DeleteView):
     model = Documentacion
-    success_url = "/proyecto/documentacion/"
-    template_name = "Appnuevo/documentacion_confirm_delete.html" 
-
+    success_url = reverse_lazy("proyecto-documentacion-list")
+    template_name = "Appnuevo/documentacion_confirm_delete.html"
         

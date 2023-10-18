@@ -26,10 +26,10 @@
               
                 <a class="btn btn-primary" href="{% url 'proyecto-inicio' %}">Inicio</a>
                 <a class="btn btn-primary" href="{% url 'proyecto-viajes' %}">Viajes</a>
-                <a class="btn btn-primary" href="{% url 'proyecto-recreadores' %}">Recreadores</a>
+                <a class="btn btn-primary" href="{% url 'proyecto-recreadores-list' %}">Recreadores</a>
                 <a class="btn btn-primary" href="{% url 'proyecto-clientes' %}">Clientes</a>
                 <a class="btn btn-primary" href="{% url 'proyecto-proveedores' %}">Proveedores</a>
-                <a class="btn btn-primary" href="{% url 'proyecto-documentacion' %}">Documentacion</a>
+                <a class="btn btn-primary" href="{% url 'proyecto-documentacion-list' %}">Documentacion</a>
                 <a class="btn btn-primary" href="{% url 'appdos-conoceme' %}">Conoceme</a>
                 
                 {% if request.user.is_authenticated %}
