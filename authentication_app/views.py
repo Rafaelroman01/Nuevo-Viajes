@@ -1,11 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from appexcursiones.forms import ViajeFormulario, RecreadorFormulario, ClienteFormulario, ProveedorFormulario,  UserRegisterForm,  UserEditForm, AvatarForm
-from appexcursiones.models import Viajes, Recreadores, Clientes, Proveedores, Documentacion, Avatar   
-
-from django.shortcuts import render
-from django.http import HttpResponse
-
+from appexcursiones.forms import UserRegisterForm,  UserEditForm, AvatarForm
+from appexcursiones.models import Avatar   
 
 #Dependencia para resolver apertura de archivos usando rutas relativas
 from Excursiones.settings import BASE_DIR
@@ -34,6 +30,7 @@ def test(request):
 
 def iniciar_sesion(request):
     errors = ""
+    #Hacemos la validacion
     if request.method =="POST":
         formulario = AuthenticationForm(request, data=request.POST)
         if formulario.is_valid():
@@ -68,7 +65,7 @@ def registrar_usuario(request):
 
 @login_required       
 def editar_perfil(request):
-    
+        
     usuario = request.user
     
     if request.method == "POST":

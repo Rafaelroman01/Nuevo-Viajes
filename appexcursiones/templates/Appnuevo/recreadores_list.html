@@ -13,6 +13,7 @@
             <div class="card-body">
             <p class="text-center text-black">GRUPO: {{ recreador.apellido }}, {{ recreador.nombre }}</p>
             <p class="text-center text-black">EMAIL: {{ recreador.email }}</p>
+            <p class="text-center text-black">IMAGEN: {{ recreador.imagen_viaj }}</p>
             <a href="{% url 'proyecto-recreadores-detail' recreador.id %}" class="btn btn-primary">Ver</a>
             <a href="{% url 'proyecto-recreadores-update' recreador.id %}" class="btn btn-primary">Editar</a>
             <a href="{% url 'proyecto-recreadores-delete' recreador.id %}" class="btn btn-primary">Borrar</a>

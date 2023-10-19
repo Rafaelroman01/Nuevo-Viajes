@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from appexcursiones.forms import ViajeFormulario, RecreadorFormulario, ClienteFormulario, ProveedorFormulario, UserRegisterForm,  UserEditForm, AvatarForm
+from appexcursiones.forms import ViajeFormulario,  UserRegisterForm,  UserEditForm, AvatarForm
+#from appexcursiones.forms import ViajeFormulario, RecreadorFormulario, ClienteFormulario, ProveedorFormulario, UserRegisterForm,  UserEditForm, AvatarForm
 from appexcursiones.models import Viajes, Recreadores, Clientes, Proveedores, Documentacion, Avatar   
 from django.urls import reverse_lazy
 
@@ -30,6 +31,7 @@ def inicio(request):
         imagen_url = ""
     return render(request, "Appnuevo/inicio.html", {"imagen_url": imagen_url})
 
+@login_required  
 def viajes(request):
     errores = ""
     

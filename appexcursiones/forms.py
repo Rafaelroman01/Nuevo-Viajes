@@ -10,26 +10,26 @@ class ViajeFormulario(forms.Form):
     email= forms.EmailField(max_length=80)
     imagen_viaj= forms.ImageField()
     
-class RecreadorFormulario(forms.Form):
-    nombre = forms.CharField(max_length=50)
-    apellido = forms.CharField(max_length=50)
-    dni = forms.IntegerField()
-    edad = forms.IntegerField()
-    email= forms.EmailField(max_length=80)
+#class RecreadorFormulario(forms.Form):
+    #nombre = forms.CharField(max_length=50)
+    #apellido = forms.CharField(max_length=50)
+    #dni = forms.IntegerField()
+    #edad = forms.IntegerField()
+    #email= forms.EmailField(max_length=80)
   
-class ClienteFormulario(forms.Form):
-    nombre = forms.CharField(max_length=50)
-    apellido = forms.CharField(max_length=50)
-    dni = forms.IntegerField()
-    edad = forms.IntegerField()
-    email= forms.EmailField(max_length=80)
+#class ClienteFormulario(forms.Form):
+    #nombre = forms.CharField(max_length=50)
+    #apellido = forms.CharField(max_length=50)
+    #dni = forms.IntegerField()
+    #edad = forms.IntegerField()
+    #email= forms.EmailField(max_length=80)
    
-class ProveedorFormulario(forms.Form):
-    nombre = forms.CharField(max_length=50)
-    apellido = forms.CharField(max_length=50)
-    dni = forms.IntegerField()
-    edad = forms.IntegerField()
-    email= forms.EmailField(max_length=80) 
+#class ProveedorFormulario(forms.Form):
+    #nombre = forms.CharField(max_length=50)
+    #apellido = forms.CharField(max_length=50)
+    #dni = forms.IntegerField()
+    #edad = forms.IntegerField()
+    #email= forms.EmailField(max_length=80) 
 
 
 class UserRegisterForm(UserCreationForm):
@@ -53,8 +53,8 @@ class UserEditForm(UserCreationForm):
     class Meta:
         model = User
         fields =[ "email", "last_name", "first_name"] 
-        
-        help_texts = {"email": "Indica un correo electronico que uses habitualmente", "first_name": "" , "last_name":""}
+        #Elimina cualquier mensaje de ayuda en los campos
+        help_texts = {"email": "Indica un correo electronico que uses habitualmente", "first_name": "" , "last_name": ""}
         
 class AvatarForm(forms.Form):
     imagen = forms.ImageField()
