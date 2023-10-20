@@ -201,13 +201,13 @@ class DocumentacionDetail(DetailView):
 class DocumentacionCreate(CreateView):
     model = Documentacion
     template_name = "Appnuevo/documentacion_create.html"
-    fields = ["nombre", "fechatope", "entregado", "email"]
+    fields = ["nombre", "fechatope", "entregado", "email",  "imagen_viaj"]
     success_url = reverse_lazy("proyecto-documentacion-list")
     
 class DocumentacionUpdate(LoginRequiredMixin, UpdateView):
     model = Documentacion
     success_url = "proyecto-documentacion-list"
-    fields = ["nombre", "fechatope", "entregado", "email"]
+    fields = ["nombre", "fechatope", "entregado", "email", "imagen_viaj"]
     template_name = "Appnuevo/documentacion_update.html"
 class DocumentacionDelete(DeleteView):
     model = Documentacion

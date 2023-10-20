@@ -2,6 +2,7 @@ from django.urls import path
 from appexcursiones.views import *
 from appexcursiones import views
 from django.contrib.auth.views import LogoutView
+import Excursiones.settings as settings 
 
 urlpatterns = [
     path('inicio/', inicio, name="proyecto-inicio"),

@@ -4,13 +4,14 @@
 
 {% block contenido %}
 
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     
     {% csrf_token %}
     <p>Nombre: <i>{{form.nombre}}</i></p>
     <p>Fecha Tope: <i>{{form.fechatope}}</i></p>
     <p>Entregado: <i>{{form.entregado}}</i></p>
     <p>Email: <i>{{form.email}}</i></p>
+    <p>Imagen: <i>{{form.imagen_viaj}}</i></p>
     <input type="submit" value="Enviar">
         
  

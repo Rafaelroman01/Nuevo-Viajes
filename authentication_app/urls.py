@@ -1,6 +1,8 @@
 from django.urls import path
 from authentication_app.views import *
 from django.contrib.auth.views import LogoutView
+from django.conf.urls.static import static
+import Excursiones.settings as settings 
 
 urlpatterns = [
     path('about/', prueba_app, name="appdos-conoceme"),
@@ -15,3 +17,7 @@ urlpatterns = [
     path('perfil/avatar/', agregar_avatar, name="auth-avatar"),
     
 ]
+
+#Agregar las URLS de archivos estaticos
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    

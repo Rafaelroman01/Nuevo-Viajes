@@ -85,7 +85,7 @@ def editar_perfil(request):
             usuario.save()
             return redirect("proyecto-inicio")
         else:
-            return render(request, "Appdos/editar_perfil.html", {"form": formulario, "erros": formulario.errors})
+            return render(request, "Appdos/editar_perfil.html", {"form": formulario, "errors": formulario.errors})
         
     else:
         #Crear el formulario vacio 
