@@ -1,0 +1,21 @@
+{% extends "Appnuevo/base.html" %}
+
+{% load static %}
+
+{% block contenido %}
+
+<h1>Detalle de Viajes</h1>
+
+<p>Nombre: <i>{{viajes.nombre}} </i></p>
+<p>Destino: <i>{{viajes.destino}}</i></p>
+<p>Grupo: <i>{{viajes.grupo}}</i></p>
+<p>Email: <i>{{viajes.email}}</p>
+<p>Imagen: <i>{{viajes.imagen_viaj}}</p>
+
+
+
+
+<button type="button" class="btn btn-dark"><a href="{% url 'proyecto-viajes-list' %}">Regresar</a></button>
+
+
+{% endblock contenido %}

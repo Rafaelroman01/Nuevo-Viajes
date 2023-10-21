@@ -1,0 +1,29 @@
+{% extends "Appnuevo/base.html" %}
+
+{% load static %}
+
+
+{% block contenido %}
+
+
+<div class="row">
+    {% for viaje in object_list %}
+        <div class="card" style="width: 18rem;" >
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+            <p class="text-center text-black">Nombre: {{ viaje.nombre }}</p>
+            <p class="text-center text-black">Nombre: {{ viaje.destino }}</p>
+            <p class="text-center text-black">Grupo: {{ viaje.grupo }}</p>
+            <p class="text-center text-black">EMAIL: {{ viaje.email }}</p>
+            <p class="text-center text-black">IMAGEN: {{ viaje.imagen_viaj }}</p>
+            <a href="{% url 'proyecto-viajes-detail' viaje.id %}" class="btn btn-primary">Ver</a>
+            <a href="{% url 'proyecto-viajes-update' viaje.id %}" class="btn btn-primary">Editar</a>
+            <a href="{% url 'proyecto-viajes-delete' viaje.id %}" class="btn btn-primary">Borrar</a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<a class="btn btn-primary btn-xl rounded-pill mt-5" href="{% url 'proyecto-viajes-create' %}">Agregar nuevo</a>
+
+{% endblock contenido %}

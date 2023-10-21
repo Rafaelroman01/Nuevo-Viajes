@@ -3,14 +3,13 @@
 {% load static %}
 
 {% block contenido %}
-<h1>Detalle del desafio entregado</h1>
+<h1>Detalle del cliente</h1>
 
 <p>Nombre: <i>{{clientes.nombre}} {{recreadores.apellido}}</i></p>
 <p>Edad: <i>{{clientes.edad}}</i></p>
 <p>DNI: <i>{{clientes.dni}}</i></p>
 <p>Email: <i>{{clientes.email}}</p>
-
-
+<p>Imagen: <i>{{clientes.imagen_viaj}}</p>
 
 
 <button type="button" class="btn btn-dark"><a href="{% url 'proyecto-clientes-list' %}">Regresar</a></button>

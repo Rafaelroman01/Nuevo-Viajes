@@ -4,12 +4,12 @@
 
 {% block contenido %}
 
-<form method="post" enctype="multipart/form-data">
+<form method="post" enctype="multipart/form-data" class="text-light">
     
     {% csrf_token %}
     
     <p>
-        Estas seguro de querer borrar al Recreador '{{object}}'?
+        Estas seguro de querer borrar la informacion de viajes '{{object}}'?
         <input type="submit" value="Borrar">
         
     </p>

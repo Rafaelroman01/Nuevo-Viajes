@@ -10,7 +10,7 @@ class Viajes(models.Model):
     destino = models.CharField(max_length=50)
     grupo = models.IntegerField()
     email= models.EmailField(max_length=80)
-    imagen_viaj= models.ImageField(null=True, blank=True, upload_to="avatares")
+    imagen_viaj= models.ImageField(null=True, blank=True, upload_to="media")
     def __str__(self):
         return f"Nombre: {self.nombre.capitalize()}, Grupo: {self.grupo}, Email: {self.email}"
 
@@ -20,7 +20,7 @@ class Recreadores(models.Model):
    dni = models.IntegerField()
    edad = models.IntegerField()
    email= models.EmailField(max_length=80)
-   imagen_viaj= models.ImageField(null=True, blank=True, upload_to="avatares")
+   imagen_viaj= models.ImageField(null=True, blank=True, upload_to="media")
    
    def __str__(self):
        return f"Nombre: {self.nombre.capitalize()}, Apellido: {self.apellido.capitalize()},  DNI: {self.dni}"
@@ -31,7 +31,7 @@ class Clientes(models.Model):
    dni = models.IntegerField()
    edad = models.IntegerField()
    email= models.EmailField(max_length=80)
-   imagen_viaj= models.ImageField(null=True, blank=True, upload_to="avatares")
+   imagen_viaj= models.ImageField(null=True, blank=True, upload_to="media")
    def __str__(self):
        return f"Nombre: {self.nombre.capitalize()}, Apellido: {self.apellido.capitalize()},  DNI: {self.dni}"
 
@@ -41,7 +41,7 @@ class Proveedores(models.Model):
     dni = models.IntegerField()
     edad = models.IntegerField()
     email= models.EmailField(max_length=80) 
-    imagen_viaj= models.ImageField(null=True, blank=True, upload_to="avatares")
+    imagen_viaj= models.ImageField(null=True, blank=True, upload_to="media")
     def __str__(self):
            return f"Nombre: {self.nombre.capitalize()}, Apellido: {self.apellido.capitalize()},  DNI: {self.dni}"
 
@@ -50,7 +50,7 @@ class Documentacion(models.Model):
     fechatope = models.DateField()
     entregado = models.BooleanField()
     email= models.EmailField(max_length=80)
-    imagen_viaj= models.ImageField(null=True, blank=True, upload_to="avatares")
+    imagen_viaj= models.ImageField(null=True, blank=True, upload_to="media")
     def __str__(self):
            return f"Nombre: {self.nombre.capitalize()}, Fecha Tope: {self.fechatope},  Email: {self.email}"
 

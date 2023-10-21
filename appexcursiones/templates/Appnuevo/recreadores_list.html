@@ -11,7 +11,7 @@
         <div class="card" style="width: 18rem;" >
             <img src="..." class="card-img-top" alt="...">
             <div class="card-body">
-            <p class="text-center text-black">GRUPO: {{ recreador.apellido }}, {{ recreador.nombre }}</p>
+            <p class="text-center text-black">APELLIDO: {{ recreador.apellido }}, NOMBRE: {{ recreador.nombre }}</p>
             <p class="text-center text-black">EMAIL: {{ recreador.email }}</p>
             <p class="text-center text-black">IMAGEN: {{ recreador.imagen_viaj }}</p>
             <a href="{% url 'proyecto-recreadores-detail' recreador.id %}" class="btn btn-primary">Ver</a>

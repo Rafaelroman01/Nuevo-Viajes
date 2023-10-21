@@ -11,7 +11,7 @@
         <div class="card" style="width: 18rem;" >
             <img src="..." class="card-img-top" alt="...">
             <div class="card-body">
-            <p class="text-center text-black">GRUPO: {{ cliente.apellido }}, {{ cliente.nombre }}</p>
+            <p class="text-center text-black">APELLIDO: {{ cliente.apellido }},NOMBRE: {{ cliente.nombre }}</p>
             <p class="text-center text-black">EMAIL: {{ cliente.email }}</p>
             <a href="{% url 'proyecto-clientes-detail' cliente.id %}" class="btn btn-primary">Ver</a>
             <a href="{% url 'proyecto-clientes-update' cliente.id %}" class="btn btn-primary">Editar</a>

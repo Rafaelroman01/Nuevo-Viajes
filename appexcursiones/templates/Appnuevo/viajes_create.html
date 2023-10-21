@@ -7,11 +7,9 @@
 <form method="post" enctype="multipart/form-data">
     
     {% csrf_token %}
-    
     <p>Nombre: <i>{{form.nombre}}</i></p>
-    <p>Apellido: <i>{{form.apellido}}</i></p>
-    <p>Edad: <i>{{form.edad}}</i></p>
-    <p>DNI: <i>{{form.dni}}</i></p>
+    <p>Destino: <i>{{form.destino}}</i></p>
+    <p>Grupo: <i>{{form.grupo}}</i></p>
     <p>Email: <i>{{form.email}}</i></p>
     <p>Imagen: <i>{{form.imagen_viaj}}</i></p>
     <input type="submit" value="Enviar">

@@ -7,11 +7,11 @@
 <ul>
     {% for documento in object_list %}
         <li>
-            <p>Nombre: {{documento.nombre}}</p> 
+            <p>Nombre: <i>{{documento.nombre}}</i></p> 
             <p>Fecha: <i>{{documento.fechatope}}</i></p>
             <p>Entregado: <i>{{documento.entregado}}</i></p>
-            <p>Email: <i>{{documento.email}}</p>
-            <p>Imagen: <i>{{documento.imagen_viaj}}</p>
+            <p>Email: <i>{{documento.email}}</i></p>
+            <p>Imagen: <i>{{documento.imagen_viaj}}</i></p>
 
 
             <a href="{% url 'proyecto-documentacion-detail' documento.id %}">Detalle</a>

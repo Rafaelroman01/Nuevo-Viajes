@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from appexcursiones.forms import UserRegisterForm,  UserEditForm, AvatarForm
-from appexcursiones.models import Avatar   
+from appexcursiones.models import Avatar  
+from django.conf.urls.static import static 
 
 #Dependencia para resolver apertura de archivos usando rutas relativas
 from Excursiones.settings import BASE_DIR

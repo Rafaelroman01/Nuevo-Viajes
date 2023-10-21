@@ -3,16 +3,17 @@ from appexcursiones.views import *
 from appexcursiones import views
 from django.contrib.auth.views import LogoutView
 import Excursiones.settings as settings 
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('inicio/', inicio, name="proyecto-inicio"),
     
     #path Viajes 
-    path('viajes/', viajes, name="proyecto-viajes"),
-    path('viajes/actualizar/<id>/', editar_viajes, name="proyecto-viajes-editar"),
-    path('viajes/borrar/<id>/', eliminar_viajes, name="proyecto-viajes-borrar"),
-    path('viajes/buscar/', buscar_viajes, name="proyecto-viajes-buscar"),
-    path('viajes/buscar/resultados/', resultados_buscar_viajes, name="proyecto-viajes-buscar-resultados"),
+    path('viajes/list/', views.ViajesListViews.as_view(), name="proyecto-viajes-list"),
+    path('viajes/detalle//<pk>/', views.ViajesDetailViews.as_view(), name="proyecto-viajes-detail"),
+    path('viajes/crear/', views.ViajesCreateView.as_view(), name="proyecto-viajes-create"),
+    path('viajes/actualizar/<pk>/', views.ViajesUpdateView.as_view(), name="proyecto-viajes-update"),
+    path('viajes/borrar//<pk>/', views.ViajesDeleteView.as_view(), name="proyecto-viajes-delete"),
     
      #path Recreadores
     path('recreadores/list/', views.RecreadoresListViews.as_view(), name="proyecto-recreadores-list"),
