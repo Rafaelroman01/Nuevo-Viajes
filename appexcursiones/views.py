@@ -147,11 +147,11 @@ class DocumentacionList(LoginRequiredMixin, ListView):
     model = Documentacion
     template_name = "Appnuevo/documentacion_list.html"
 
-class DocumentacionDetail(DetailView):
+class DocumentacionDetail(LoginRequiredMixin, DetailView):
     model = Documentacion
     template_name = "Appnuevo/documentacion_detail.html"
     
-class DocumentacionCreate(CreateView):
+class DocumentacionCreate(LoginRequiredMixin, CreateView):
     model = Documentacion
     template_name = "Appnuevo/documentacion_create.html"
     fields = ["nombre", "fechatope", "entregado", "email", "imagen_viaj"]
@@ -159,7 +159,7 @@ class DocumentacionCreate(CreateView):
     
 class DocumentacionUpdate(LoginRequiredMixin, UpdateView):
     model = Documentacion
-    success_url = "proyecto-documentacion-list"
+    success_url = reverse_lazy("proyecto-documentacion-list")
     fields = ["nombre", "fechatope", "entregado", "email", "imagen_viaj"]
     template_name = "Appnuevo/documentacion_update.html"
 class DocumentacionDelete(DeleteView):
