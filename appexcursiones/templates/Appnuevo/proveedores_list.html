@@ -13,7 +13,7 @@
             <div class="card-body">
             <p class="text-center text-black">GRUPO: {{ proveedor.apellido }}, {{ proveedor.nombre }}</p>
             <p class="text-center text-black">EMAIL: {{ proveedor.email }}</p>
-            <img src="{{ documento.imagen_viaj }}" alt="IMAGEN:" class="right center" width="150px">
+            <img src="{{ proveedor.imagen_viaj }}" alt="IMAGEN:" class="right center" width="150px">
             
             <a href="{% url 'proyecto-proveedores-detail' proveedor.id %}" class="btn btn-primary">Ver</a>
             <a href="{% url 'proyecto-proveedores-update' proveedor.id %}" class="btn btn-primary">Editar</a>
