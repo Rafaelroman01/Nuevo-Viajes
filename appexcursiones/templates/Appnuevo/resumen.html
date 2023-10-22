@@ -1,0 +1,47 @@
+{% extends "Appnuevo/base.html" %}
+
+{% load static %}
+
+
+{% block contenido %}
+
+
+<div class="row">
+
+    #Templates viajes
+    <a href="{% url 'proyecto-viajes-list' viajes.id %}" class="btn btn-primary">Ver</a>
+    <a href="{% url 'proyecto-viajes-detail' viajes.id %}" class="btn btn-primary">Detalle</a>
+    <a href="{% url 'proyecto-viajes-create' viajes.id %}" class="btn btn-primary">Crear Nuevo</a>
+    <a href="{% url 'proyecto-viajes-update' viajes.id %}" class="btn btn-primary">Editar</a>
+    <a href="{% url 'proyecto-viajes-delete' viajes.id %}" class="btn btn-primary">Borrar</a>        
+    
+    #Templates Recreadores
+    <a href="{% url 'proyecto-recreadores-list' recreadores.id %}" class="btn btn-primary">Ver</a>
+    <a href="{% url 'proyecto-recreadores-detail' recreadores.id %}" class="btn btn-primary">Detalle</a>
+    <a href="{% url 'proyecto-recreadores-create' recreadores.id %}" class="btn btn-primary">Crear Nuevo</a>
+    <a href="{% url 'proyecto-recreadores-update' recreadores.id %}" class="btn btn-primary">Editar</a>
+    <a href="{% url 'proyecto-recreadores-delete' recreadores.id %}" class="btn btn-primary">Borrar</a>      
+    
+    #Templates Clientes
+    <a href="{% url 'proyecto-clientes-list' clientes.id %}" class="btn btn-primary">Ver</a>
+    <a href="{% url 'proyecto-clientes-detail' clientes.id %}" class="btn btn-primary">Detalle</a>
+    <a href="{% url 'proyecto-clientes-create' clientes.id %}" class="btn btn-primary">Crear Nuevo</a>
+    <a href="{% url 'proyecto-clientes-update' clientes.id %}" class="btn btn-primary">Editar</a>
+    <a href="{% url 'proyecto-clientes-delete' clientes.id %}" class="btn btn-primary">Borrar</a>      
+
+    #Templates Proveedores
+    <a href="{% url 'proyecto-proveedores-list' proveedores.id %}" class="btn btn-primary">Ver</a>
+    <a href="{% url 'proyecto-proveedores-detail' proveedores.id %}" class="btn btn-primary">Detalle</a>
+    <a href="{% url 'proyecto-proveedores-create' proveedores.id %}" class="btn btn-primary">Crear Nuevo</a>
+    <a href="{% url 'proyecto-proveedores-update' proveedores.id %}" class="btn btn-primary">Editar</a>
+    <a href="{% url 'proyecto-proveedores-delete' proveedores.id %}" class="btn btn-primary">Borrar</a>      
+    
+    #Templates Documentacion
+    <a href="{% url 'proyecto-documentacion-list' documentacion.id %}" class="btn btn-primary">Ver</a>
+    <a href="{% url 'proyecto-documentacion-detail' documentacion.id %}" class="btn btn-primary">Detalle</a>
+    <a href="{% url 'proyecto-documentacion-create' documentacion.id %}" class="btn btn-primary">Crear Nuevo</a>
+    <a href="{% url 'proyecto-documentacion-update' documentacion.id %}" class="btn btn-primary">Editar</a>
+    <a href="{% url 'proyecto-documentacion-delete' documentacion.id %}" class="btn btn-primary">Borrar</a>    
+    
+
+{% endblock contenido %}
