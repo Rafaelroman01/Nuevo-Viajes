@@ -4,6 +4,10 @@ from appexcursiones import views
 from django.contrib.auth.views import LogoutView
 import Excursiones.settings as settings 
 from django.conf.urls.static import static
+import Excursiones.settings as settings 
+from django.conf import settings 
+
+
 
 urlpatterns = [
     path('inicio/', inicio, name="proyecto-inicio"),
@@ -45,5 +49,11 @@ urlpatterns = [
     path('documentacion/update/<pk>/',  views.DocumentacionUpdate.as_view(), name="proyecto-documentacion-update"),
     path('documentacion/delete//<pk>/',  views.DocumentacionDelete.as_view(), name="proyecto-documentacion-delete"),
     
-    
+
+
+
 ]
+
+#Agregar las URLS de archivos estaticos
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    

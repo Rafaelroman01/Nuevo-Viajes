@@ -15,7 +15,10 @@
             <p class="text-center text-black">Nombre: {{ viaje.destino }}</p>
             <p class="text-center text-black">Grupo: {{ viaje.grupo }}</p>
             <p class="text-center text-black">EMAIL: {{ viaje.email }}</p>
-            <p class="text-center text-black">IMAGEN: {{ viaje.imagen_viaj }}</p>
+            <img src="IMAGEN: {{ viaje.imagen_viaj }}" alt="">
+            
+            
+            
             <a href="{% url 'proyecto-viajes-detail' viaje.id %}" class="btn btn-primary">Ver</a>
             <a href="{% url 'proyecto-viajes-update' viaje.id %}" class="btn btn-primary">Editar</a>
             <a href="{% url 'proyecto-viajes-delete' viaje.id %}" class="btn btn-primary">Borrar</a>

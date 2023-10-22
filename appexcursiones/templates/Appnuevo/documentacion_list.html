@@ -9,14 +9,19 @@
     <div class="card" style="width: 18rem;" >
         <img src="..." class="card-img-top" alt="...">
         <div class="card-body">
-        <p class="text-center text-black">NOMBRE:: {{ documento.nombre }}, FECHA TOPE: {{ documento.fechatope }}</p>
+        <p class="text-center text-black">NOMBRE: {{ documento.nombre }}</p>
+        <p class="text-center text-black">ECHA TOPE: {{ documento.fechatope }}</p>
+        <p class="text-center text-black">ENTREGADO: {{ documento.entregado }}</p>
         <p class="text-center text-black">EMAIL: {{ documento.email }}</p>
+        <img src="{{ documento.imagen_viaj }}" alt="IMAGEN:" class="right center" width="150px">
+        
         <a href="{% url 'proyecto-documentacion-detail' documento.id %}">Detalle</a>
         <a href="{% url 'proyecto-documentacion-update' documento.id %}">Actualizar</a>
         <a href="{% url 'proyecto-documentacion-delete' documento.id %}">Borrar</a>
     </div>
-</div>
     {% endfor %}
+</div>
+    
 </ul>
 <a class="btn btn-primary btn-xl rounded-pill mt-5" href="{% url 'proyecto-documentacion-create' %}">Agregar nuevo</a>
 

@@ -10,7 +10,10 @@
 <p>Fecha: <i>{{documentacion.fechatope}}</i></p>
 <p>Entregado: <i>{{documentacion.entregado}}</i></p>
 <p>Email: <i>{{documentacion.email}}</i></p>
-<p>Imagen: <i>{{documentacion.imagen_viaj}}</i></p>
+<p>Info: <i>{{documentacion.info_document}}</i></p>
+<img src=" {{ documentacion.imagen_viaj.url }}" alt="IMAGEN:" class="right center" width="450px">
+
+
 
 <button type="button" class="btn btn-dark"><a href="{% url 'proyecto-documentacion-list' %}">Volver al listado</a>
 
