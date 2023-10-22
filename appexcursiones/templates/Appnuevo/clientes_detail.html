@@ -9,8 +9,10 @@
 <p>Edad: <i>{{clientes.edad}}</i></p>
 <p>DNI: <i>{{clientes.dni}}</i></p>
 <p>Email: <i>{{clientes.email}}</p>
-<p>Imagen: <i>{{clientes.imagen_viaj}}</p>
-
+<p>Info: <i>{{clientes.info_document}}</i></p>
+<img src=" {{ clientes.imagen_viaj.url }}" alt="IMAGEN:" class="right center" width="450px">
+    
+    
 
 <button type="button" class="btn btn-dark"><a href="{% url 'proyecto-clientes-list' %}">Regresar</a></button>
 

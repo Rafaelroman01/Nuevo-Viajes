@@ -43,13 +43,13 @@ class ViajesDetailViews(LoginRequiredMixin, DetailView):
 class ViajesCreateView(LoginRequiredMixin, CreateView):
     model = Viajes
     template_name = "Appnuevo/viajes_create.html"
-    fields = ["nombre", "destino", "grupo",  "email","imagen_viaj"]
+    fields = ["nombre", "destino", "grupo",  "email", "info_document", "imagen_viaj"]
     success_url = reverse_lazy("proyecto-viajes-list")
     
 class ViajesUpdateView(LoginRequiredMixin, UpdateView):
     model = Viajes
     success_url = reverse_lazy("proyecto-viajes-list")
-    fields = ["nombre", "destino", "grupo",  "email","imagen_viaj"]
+    fields = ["nombre", "destino", "grupo",  "email", "info_document", "imagen_viaj"]
     template_name = "Appnuevo/viajes_update.html"
 
 class ViajesDeleteView(DeleteView):
@@ -70,13 +70,13 @@ class RecreadoresDetailViews(LoginRequiredMixin, DetailView):
 class RecreadoresCreateView(LoginRequiredMixin, CreateView):
     model = Recreadores
     template_name = "Appnuevo/recreadores_create.html"
-    fields = ["nombre", "apellido", "dni", "edad",  "email", "imagen_viaj"]
+    fields = ["nombre", "apellido", "dni", "edad",  "email", "info_document", "imagen_viaj"]
     success_url = reverse_lazy("proyecto-recreadores-list")
     
 class RecreadoresUpdateView(LoginRequiredMixin, UpdateView):
     model = Recreadores
     success_url = reverse_lazy("proyecto-recreadores-list")
-    fields = ["nombre", "apellido", "dni", "edad",  "email", "imagen_viaj"]
+    fields = ["nombre", "apellido", "dni", "edad",  "email", "info_document", "imagen_viaj"]
     template_name = "Appnuevo/recreadores_update.html"
 
 class RecreadoresDeleteView(DeleteView):
@@ -98,13 +98,13 @@ class ClientesDetailViews(LoginRequiredMixin, DetailView):
 class ClientesCreateView(LoginRequiredMixin, CreateView):
     model = Clientes
     template_name = "Appnuevo/clientes_create.html"
-    fields = ["nombre", "apellido", "dni", "edad",  "email", "imagen_viaj"]
+    fields = ["nombre", "apellido", "dni", "edad",  "email", "info_document", "imagen_viaj"]
     success_url = reverse_lazy("proyecto-clientes-list")
     
 class ClientesUpdateView(LoginRequiredMixin, UpdateView):
     model = Clientes
     success_url = reverse_lazy("proyecto-clientes-list")
-    fields = ["nombre", "apellido", "dni", "edad",  "email", "imagen_viaj"]
+    fields = ["nombre", "apellido", "dni", "edad",  "email", "info_document", "imagen_viaj"]
     template_name = "Appnuevo/clientes_update.html"
 
 class ClientesDeleteView(DeleteView):
@@ -126,13 +126,13 @@ class ProveedoresDetailViews(LoginRequiredMixin, DetailView):
 class ProveedoresCreateView(LoginRequiredMixin, CreateView):
     model = Proveedores
     template_name = "Appnuevo/proveedores_create.html"
-    fields = ["nombre", "apellido", "dni", "edad",  "email", "imagen_viaj"]
+    fields = ["nombre", "apellido", "dni", "edad",  "email", "info_document", "imagen_viaj"]
     success_url = reverse_lazy("proyecto-proveedores-list")
     
 class ProveedoresUpdateView(LoginRequiredMixin, UpdateView):
     model = Proveedores
     success_url = reverse_lazy("proyecto-proveedores-list")
-    fields = ["nombre", "apellido", "dni", "edad",  "email", "imagen_viaj"]
+    fields = ["nombre", "apellido", "dni", "edad",  "email", "info_document", "imagen_viaj"]
     template_name = "Appnuevo/proveedores_update.html"
 
 class ProveedoresDeleteView(DeleteView):

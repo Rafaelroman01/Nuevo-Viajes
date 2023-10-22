@@ -13,6 +13,8 @@
             <div class="card-body">
             <p class="text-center text-black">APELLIDO: {{ cliente.apellido }}, NOMBRE: {{ cliente.nombre }}</p>
             <p class="text-center text-black">EMAIL: {{ cliente.email }}</p>
+            <img src="{{ documento.imagen_viaj }}" alt="IMAGEN:" class="right center" width="150px">
+            
             <a href="{% url 'proyecto-clientes-detail' cliente.id %}" class="btn btn-primary">Ver</a>
             <a href="{% url 'proyecto-clientes-update' cliente.id %}" class="btn btn-primary">Editar</a>
             <a href="{% url 'proyecto-clientes-delete' cliente.id %}" class="btn btn-primary">Borrar</a>
