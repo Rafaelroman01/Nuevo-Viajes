@@ -13,11 +13,11 @@
         <p class="text-center text-black">ECHA TOPE: {{ documento.fechatope }}</p>
         <p class="text-center text-black">ENTREGADO: {{ documento.entregado }}</p>
         <p class="text-center text-black">EMAIL: {{ documento.email }}</p>
-        <img src="{{ documento.imagen_viaj }}" alt="IMAGEN:" class="right center" width="150px">
         
-        <a href="{% url 'proyecto-documentacion-detail' documento.id %}">Detalle</a>
-        <a href="{% url 'proyecto-documentacion-update' documento.id %}">Actualizar</a>
-        <a href="{% url 'proyecto-documentacion-delete' documento.id %}">Borrar</a>
+        
+        <a href="{% url 'proyecto-documentacion-detail' documento.id %}" class="btn btn-primary">Detalle</a>
+        <a href="{% url 'proyecto-documentacion-update' documento.id %}" class="btn btn-primary">Actualizar</a>
+        <a href="{% url 'proyecto-documentacion-delete' documento.id %}"class="btn btn-primary">Borrar</a>
     </div>
     {% endfor %}
 </div>
