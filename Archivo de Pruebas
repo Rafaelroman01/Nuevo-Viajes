@@ -1,0 +1,10 @@
+Nombre del proyecto: Viajes 2				Navegador:	
+N° Caso de Prueba:	3			Version:	1,1,01
+Escrito por:	Ramon Rafael Roman			Descripcion:	
+Probado Por:	Ramon Rafael Roman			Probado en:	
+					
+					
+Prueba#	Fecha	Accion	Resultados esperados	Resultados Actuales	Aprobado
+1	21/10/2023	Iniciando Sesion	Que me lleve a la pagina de Inicio	Satisfactorio	SI
+2	21/10/2023	Subir imagen Modelos Viajes	Que me muestre la imagen	Falla, me muestra la dirreccion de la imagen	no
+3	21/10/2023	Editar Usuario	Que me actualice los datos	Satisfactorio	si
