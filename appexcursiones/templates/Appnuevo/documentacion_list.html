@@ -15,6 +15,7 @@
         <p class="text-center text-black">EMAIL: {{ documento.email }}</p>
         
         
+        
         <a href="{% url 'proyecto-documentacion-detail' documento.id %}" class="btn btn-primary">Detalle</a>
         <a href="{% url 'proyecto-documentacion-update' documento.id %}" class="btn btn-primary">Actualizar</a>
         <a href="{% url 'proyecto-documentacion-delete' documento.id %}"class="btn btn-primary">Borrar</a>

@@ -10,9 +10,12 @@
     <p>Nombre: <i>{{form.nombre}}</i></p>
     <p>Fecha Tope: <i>{{form.fechatope}}</i></p>
     <p>Entregado: <i>{{form.entregado}}</i></p>
+    <p>Imagen: <i>{{form.imagen_viaj}}</i></p>
     <p>Email: <i>{{form.email}}</i></p>
+    <img src="{{ form.imagen_viaj.url }}" alt="" class="right center" width="150px">
+    
     <p>Info: <i>{{form.info_document}}</i></p>
-    <img src="{{ form.imagen_viaj.url }}" alt="IMAGEN:" class="right center" width="150px">
+    
   
     <input type="submit" value="Enviar">
         
